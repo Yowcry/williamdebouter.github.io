@@ -1,4 +1,4 @@
-const targetDate = new Date(1999, 5, 31)
+const targetDate = new Date(2022, 4, 14)
 const yearsElement = document.querySelector('.years')
 const daysElement = document.querySelector('.days')
 const hoursElement = document.querySelector('.hours')
