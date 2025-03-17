@@ -262,3 +262,34 @@ body {
       margin-bottom: 40px;
     }
   }
+
+/* AWS Page Specific Styles */
+.aws-container {
+  width: 100vw; /* Full width */
+  margin: 0 auto;
+  padding: 2em;
+  background: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 0; /* Remove rounded corners */
+  text-align: center;
+}
+
+.aws-content {
+  max-width: 900px; /* Keeps text aligned in center */
+  margin: 0 auto;
+  text-align: left;
+}
+
+.aws-container h1, .aws-container h2 {
+  color: #222;
+  text-align: center;
+}
+
+.aws-container a {
+  color: #0073e6;
+  text-decoration: none;
+}
+
+.aws-container a:hover {
+  text-decoration: underline;
+}
