@@ -293,3 +293,20 @@ body {
 .aws-container a:hover {
   text-decoration: underline;
 }
+
+/* Page transition fade */
+#page-content.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+#page-content.fade-in {
+  opacity: 0;
+  animation: fadeInPage 0.5s ease forwards;
+}
+
+@keyframes fadeInPage {
+  to {
+    opacity: 1;
+  }
+}
