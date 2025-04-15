@@ -4,12 +4,11 @@ window.addEventListener('scroll', () => {
   header.classList.toggle('nav-scrolled', window.scrollY > 50);
 });
 
-// Theme toggle logic
-const toggle = document.getElementById('theme-toggle');
+// Get logo element
 const logoImg = document.getElementById('site-logo');
 const userPref = localStorage.getItem('theme');
 
-// Utility to update the logo based on theme
+// Utility to update logo image
 function updateLogo() {
   const isDark = document.body.classList.contains('dark-mode');
   logoImg.src = isDark ? './pngs/logo-white.png' : './pngs/logo-black.png';
@@ -21,8 +20,8 @@ if (userPref === 'dark') {
 }
 updateLogo();
 
-// Toggle theme on click
-toggle.addEventListener('click', () => {
+// Toggle dark mode when logo is clicked
+logoImg.addEventListener('click', () => {
   document.body.classList.toggle('dark-mode');
   const isDark = document.body.classList.contains('dark-mode');
   localStorage.setItem('theme', isDark ? 'dark' : 'light');

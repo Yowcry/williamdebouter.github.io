@@ -2,12 +2,14 @@
   --bg-color: #ffffff;
   --text-color: #000000;
   --link-color: #0073e6;
+  --header-bg: #f4f4f4;
 }
 
 body.dark-mode {
   --bg-color: #121212;
   --text-color: #e0e0e0;
   --link-color: #8ab4f8;
+  --header-bg: #000000;
 }
 
 body {
@@ -61,10 +63,11 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 2em 3em;
-  background: transparent;
+  background-color: var(--header-bg); /* 👈 your new light gray background */
   color: var(--text-color);
   transition: background 250ms ease-in, color 250ms ease-in;
 }
+
 
 .nav__list {
   list-style: none;
@@ -103,7 +106,7 @@ header {
 }
 
 .nav-scrolled {
-  background-color: #ffffff;
+  background-color: var(--header-bg);
   box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
 }
 
