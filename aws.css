@@ -2,7 +2,8 @@
   --bg-color: #ffffff;
   --text-color: #000000;
   --link-color: #0073e6;
-  --header-bg: #f4f4f4;
+  --header-bg: transparent;
+  --header-text: #f4f4f4;
 }
 
 body.dark-mode {
@@ -10,6 +11,11 @@ body.dark-mode {
   --text-color: #e0e0e0;
   --link-color: #8ab4f8;
   --header-bg: #000000;
+  --header-text: #ffffff;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -21,15 +27,7 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-a {
-  color: var(--link-color);
-  text-decoration: none;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
+/* --- Logo Styling (Perfect Match) --- */
 .yowcry {
   width: 70px;
   height: auto;
@@ -38,19 +36,22 @@ html {
   transition: 500ms;
   display: flex;
   align-items: center;
-  flex-shrink: 0;
+  mix-blend-mode: difference;
 }
 
-.logo-img {
+.yowcry img {
   max-width: 100%;
   max-height: 100%;
   border-radius: 5px;
   transition: filter 0.3s ease;
-  display: block;
 }
 
-body.dark-mode .logo-img {
-  filter: invert(1) brightness(2);
+body:not(.dark-mode) .yowcry img {
+  filter: none;
+}
+
+body.dark-mode .yowcry img {
+  filter: invert(1) brightness(1.8);
 }
 
 .yowcry:hover {
@@ -58,7 +59,11 @@ body.dark-mode .logo-img {
   z-index: 2;
 }
 
+/* --- Header (Pixel Match from main.css) --- */
 header {
+  --text: #f4f4f4;
+  --text-inverse: #333;
+  --background: transparent;
   position: fixed;
   top: 0;
   left: 0;
@@ -67,11 +72,10 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5em 2em;
-  background-color: var(--header-bg);
-  color: var(--text-color);
+  padding: 2em 3em;
   transition: background 250ms ease-in, color 250ms ease-in;
-  flex-wrap: nowrap;
+  background: var(--background);
+  color: var(--text);
 }
 
 .nav__list {
@@ -79,32 +83,29 @@ header {
   margin: 0;
   padding: 0;
   display: flex;
-  gap: 1.5em;
-  flex-wrap: nowrap;
-  justify-content: flex-end;
 }
 
 .nav__link {
+  --spacing: 1em;
   text-decoration: none;
-  color: var(--text-color);
+  color: inherit;
+  display: inline-block;
+  padding: calc(var(--spacing) / 2) var(--spacing);
+  position: relative;
   text-transform: uppercase;
   letter-spacing: 2px;
-  font-size: 1.2rem;
-  position: relative;
-  white-space: nowrap;
-  transition: color 0.3s ease-in-out;
+  font-size: 1.4rem;
 }
 
-.nav__link::after {
+.nav__link:after {
   content: "";
   position: absolute;
-  bottom: -5px;
-  left: 0;
-  right: 0;
+  bottom: 0;
+  left: var(--spacing);
+  right: var(--spacing);
   height: 2px;
   background: currentColor;
   transform: scaleX(0);
-  transform-origin: center;
   transition: transform 150ms ease-in-out;
 }
 
@@ -112,27 +113,50 @@ header {
   transform: scaleX(1);
 }
 
+.nav__link--btn {
+  border: 1.5px solid currentColor;
+  border-radius: 2em;
+  margin-left: 1em;
+  transition: background 250ms ease-in-out;
+  letter-spacing: 1px;
+  padding: 0.75em 1.5em;
+}
+
+.nav__link--btn:hover {
+  background: var(--text);
+  color: var(--text-inverse);
+  border-color: var(--text);
+}
+
+.nav__link--btn::after {
+  display: none;
+}
+
+.nav__link--btn--highlight {
+  background: limegreen;
+  border-color: limegreen;
+  color: #333;
+}
+
+.nav__link--btn--highlight:hover {
+  background: var(--text);
+  border-color: var(--text);
+}
+
+/* ✅ Fix scroll version of header */
 .nav-scrolled {
-  background-color: var(--header-bg);
+  --text: #333;
+  --text-inverse: #f4f4f4;
+  --background: #f4f4f4;
   box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
 }
 
-.nav-scrolled .nav__link {
-  color: var(--text-color);
-}
-
 body.dark-mode .nav-scrolled {
-  background-color: #000000;
+  --text: #ffffff;
+  --background: #000000;
 }
 
-body.dark-mode .nav-scrolled .nav__link {
-  color: #e0e0e0;
-}
-
-main {
-  padding-top: 140px;
-}
-
+/* --- Main Section --- */
 .aws-container {
   width: 100vw;
   margin: 0 auto;
@@ -156,10 +180,16 @@ main {
   text-align: center;
 }
 
+.aws-container a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
 .aws-container a:hover {
   text-decoration: underline;
 }
 
+/* --- Social Footer --- */
 .sosmed {
   display: flex;
   background: black;
@@ -176,21 +206,7 @@ main {
   height: auto;
 }
 
-.theme-toggle {
-  font-size: 1.4rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--text-color);
-  margin-left: 1em;
-  transition: transform 0.3s ease;
-}
-
-.theme-toggle:hover {
-  transform: rotate(20deg);
-}
-
-/* Fade transition */
+/* --- Page Transitions --- */
 #page-content.fade-out {
   opacity: 0;
   transition: opacity 0.5s ease;
@@ -207,24 +223,29 @@ main {
   }
 }
 
-/* Responsive fix for mobile */
+/* --- Responsive for Mobile --- */
 @media (max-width: 768px) {
   header {
-    padding: 1.2em 1.5em;
-    flex-direction: row;
-    justify-content: space-between;
+    padding: 1.5em 1.5em;
   }
 
   .nav__list {
-    gap: 1em;
+    gap: 0.8em;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
   }
 
   .nav__link {
-    font-size: 0.95rem;
+    font-size: 1.1rem;
+    padding: 0.5em 0;
   }
 
-  .logo-img {
-    max-width: 48px;
+  .aws-container {
+    padding: 1.5em 1em;
+  }
+
+  .aws-content {
+    padding: 0 0.5em;
   }
 
   .sosmed {
@@ -237,11 +258,7 @@ main {
     width: 40px;
   }
 
-  .aws-container {
-    padding: 1.5em 1em;
-  }
-
-  .aws-content {
-    padding: 0 0.5em;
+  main {
+    padding-top: 140px;
   }
 }
