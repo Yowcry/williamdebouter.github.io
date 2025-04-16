@@ -38,6 +38,7 @@ html {
   transition: 500ms;
   display: flex;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .logo-img {
@@ -45,6 +46,7 @@ html {
   max-height: 100%;
   border-radius: 5px;
   transition: filter 0.3s ease;
+  display: block;
 }
 
 body.dark-mode .logo-img {
@@ -65,7 +67,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2em 3em; /* original comfortable size */
+  padding: 1.5em 2em;
   background-color: var(--header-bg);
   color: var(--text-color);
   transition: background 250ms ease-in, color 250ms ease-in;
@@ -78,6 +80,8 @@ header {
   padding: 0;
   display: flex;
   gap: 1.5em;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
 }
 
 .nav__link {
@@ -87,6 +91,7 @@ header {
   letter-spacing: 2px;
   font-size: 1.2rem;
   position: relative;
+  white-space: nowrap;
   transition: color 0.3s ease-in-out;
 }
 
@@ -202,25 +207,25 @@ main {
   }
 }
 
-/* Responsive: header and nav fit in one line on mobile */
+/* Responsive fix for mobile */
 @media (max-width: 768px) {
   header {
-    padding: 1.5em 1.5em; /* slightly tighter for mobile but still spacious */
+    padding: 1.2em 1.5em;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
   }
 
   .nav__list {
-    gap: 0.8em;
-    flex-wrap: nowrap;
-    justify-content: flex-end;
+    gap: 1em;
   }
 
   .nav__link {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
-}
+
+  .logo-img {
+    max-width: 48px;
+  }
 
   .sosmed {
     gap: 40px;
@@ -239,3 +244,4 @@ main {
   .aws-content {
     padding: 0 0.5em;
   }
+}
