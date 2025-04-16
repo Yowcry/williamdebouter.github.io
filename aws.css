@@ -23,6 +23,7 @@ body {
 
 a {
   color: var(--link-color);
+  text-decoration: none;
 }
 
 html {
@@ -35,6 +36,8 @@ html {
   object-fit: contain;
   text-decoration: none;
   transition: 500ms;
+  display: flex;
+  align-items: center;
 }
 
 .logo-img {
@@ -62,10 +65,11 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2em 3em;
+  padding: 2em 3em; /* original comfortable size */
   background-color: var(--header-bg);
   color: var(--text-color);
   transition: background 250ms ease-in, color 250ms ease-in;
+  flex-wrap: nowrap;
 }
 
 .nav__list {
@@ -73,30 +77,29 @@ header {
   margin: 0;
   padding: 0;
   display: flex;
+  gap: 1.5em;
 }
 
 .nav__link {
-  --spacing: 1em;
   text-decoration: none;
   color: var(--text-color);
-  display: inline-block;
-  padding: calc(var(--spacing) / 2) var(--spacing);
-  position: relative;
   text-transform: uppercase;
   letter-spacing: 2px;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
+  position: relative;
   transition: color 0.3s ease-in-out;
 }
 
-.nav__link:after {
+.nav__link::after {
   content: "";
   position: absolute;
-  bottom: 0;
-  left: var(--spacing);
-  right: var(--spacing);
+  bottom: -5px;
+  left: 0;
+  right: 0;
   height: 2px;
   background: currentColor;
   transform: scaleX(0);
+  transform-origin: center;
   transition: transform 150ms ease-in-out;
 }
 
@@ -122,7 +125,7 @@ body.dark-mode .nav-scrolled .nav__link {
 }
 
 main {
-  padding-top: 160px;
+  padding-top: 140px;
 }
 
 .aws-container {
@@ -132,7 +135,6 @@ main {
   background: var(--bg-color);
   color: var(--text-color);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 0;
   text-align: center;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -161,6 +163,7 @@ main {
   align-items: center;
   gap: 100px;
   height: 120px;
+  flex-wrap: wrap;
 }
 
 .sosimg {
@@ -182,7 +185,7 @@ main {
   transform: rotate(20deg);
 }
 
-/* Page transition fade */
+/* Fade transition */
 #page-content.fade-out {
   opacity: 0;
   transition: opacity 0.5s ease;
@@ -199,24 +202,34 @@ main {
   }
 }
 
-/* ✅ Responsive Mobile Fix */
+/* Responsive: header and nav fit in one line on mobile */
 @media (max-width: 768px) {
   header {
-    padding: 1em 1.5em;
-    flex-direction: column;
-    align-items: flex-start;
+    padding: 1.5em 1.5em; /* slightly tighter for mobile but still spacious */
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .nav__list {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.75em;
-    margin-top: 1em;
+    gap: 0.8em;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
   }
 
   .nav__link {
-    font-size: 1.1rem;
-    padding: 0.5em 0;
+    font-size: 1rem;
+  }
+}
+
+  .sosmed {
+    gap: 40px;
+    height: auto;
+    padding: 1em;
+  }
+
+  .sosimg {
+    width: 40px;
   }
 
   .aws-container {
@@ -226,19 +239,3 @@ main {
   .aws-content {
     padding: 0 0.5em;
   }
-
-  .sosmed {
-    flex-wrap: wrap;
-    gap: 40px;
-    padding: 1em;
-    height: auto;
-  }
-
-  .sosimg {
-    width: 40px;
-  }
-
-  main {
-    padding-top: 140px;
-  }
-}
