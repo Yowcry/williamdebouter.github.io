@@ -31,12 +31,12 @@ body {
 .yowcry {
   width: 70px;
   height: auto;
+  --image: #f4f4f4;
+  --image-inverse: #333;
+  --background: transparent;
   object-fit: contain;
-  text-decoration: none;
-  transition: 500ms;
-  display: flex;
-  align-items: center;
   mix-blend-mode: difference;
+  text-decoration: none;
 }
 
 .yowcry img {
@@ -105,6 +105,11 @@ header {
   right: var(--spacing);
   height: 2px;
   background: currentColor;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  transition: -webkit-transform 150ms ease-in-out;
+  transition: transform 150ms ease-in-out;
+  transition: transform 150ms ease-in-out, -webkit-transform 150ms ease-in-out;
   transform: scaleX(0);
   transition: transform 150ms ease-in-out;
 }
@@ -230,14 +235,22 @@ body.dark-mode .nav-scrolled {
   }
 
   .nav__list {
-    gap: 0.8em;
-    flex-wrap: nowrap;
-    justify-content: flex-end;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
   }
 
   .nav__link {
-    font-size: 1.1rem;
-    padding: 0.5em 0;
+    --spacing: 1em;
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+    padding: calc(var(--spacing) / 2) var(--spacing);
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1.4rem;
   }
 
   .aws-container {
