@@ -17,7 +17,7 @@ html, body {
 /* Header */
 header {
   background: #f4f4f4;
-  box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
+  color: #000000;
   position: fixed;
   top: 0;
   left: 0;
@@ -26,9 +26,8 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2em 3em;
-  background: #ffffff;
-  color: #000000;
+  padding: 1.5em 2em;
+  box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
   transition: background 250ms ease-in, color 250ms ease-in;
 }
 
@@ -56,7 +55,7 @@ header.nav-scrolled {
   position: relative;
   text-transform: uppercase;
   letter-spacing: 2px;
-  font-size: 1.4rem;
+  font-size: 1rem; /* Reduced from 1.4rem */
   color: inherit;
   transition: color 0.3s ease-in-out;
 }
@@ -79,13 +78,13 @@ header.nav-scrolled {
 
 /* Logo */
 .yowcry {
-  width: 70px;
-  height: auto;
-  object-fit: contain;
-  text-decoration: none;
-  transition: 500ms;
+  width: 80px;
+  height: 80px; /* Force a height */
   display: flex;
   align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
 }
 
 .yowcry img {
