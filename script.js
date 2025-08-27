@@ -1,4 +1,4 @@
-const targetDate = new Date(2022, 3, 11, 9, 0, 0);
+const targetDate = new Date(2022, 3, 11, 0, 0, 0);
 
 const yearsElement   = document.querySelector('.years');
 const daysElement    = document.querySelector('.days');
